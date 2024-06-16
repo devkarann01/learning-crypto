@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title></title>
+   </head>
+   <link rel="stylesheet" type="text/css" href="assest/css/layout.css">
+   <link rel="stylesheet" type="text/css" href="assest/css/style.css">
+   <link href="assest/font/poppins-v21-latin/poppins-v21-latin-regular.woff2">
+   <link href="assest/font/poppins-v21-latin/poppins-v21-latin-600.woff2">
+   <style type="text/css">
+      @font-face {
+      font-display: swap;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      src: url('assest/font/poppins-v21-latin/poppins-v21-latin-regular.woff2') format('woff2'); 
+      }
+      @font-face {
+      font-display: swap;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 600;
+      src: url('assest/font/poppins-v21-latin/poppins-v21-latin-600.woff2') format('woff2');
+      }
+   </style>
+   <body>
+      <header>
+         <div class="container d-flex align-items-center justify-content-between">
+            <div class="toggle-slide-btn" onclick="toggleButtons()">
+               <svg width="20" height="20" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM64 256c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H96c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z">
+                  </path>
+               </svg>
+            </div>
+            <div class="logo">
+               <a href="#">Learning Crypto</a>
+            </div>
+            <div class="d-flex align-items-center">
+               <nav class="top-bar">
+                  <div class="cancel-btn" onclick="toggleButtons()">
+                     <svg fill="#000" xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 384 512">
+                        <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z">
+                        </path>
+                     </svg>
+                  </div>
+                  <ul>
+                     <li>
+                        <a href="#">Home</a>
+                     </li>
+                     <li>
+                        <a href="#">About us</a>
+                     </li>
+                     <li>
+                        <a href="#">Service</a>
+                     </li>
+                     <li class="dropdown position-relative">
+                        <a href="#">
+                        Blogs
+                        </a>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 448 512">
+                           <path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z">
+                           </path>
+                        </svg>
+                        <ul>
+                           <li><a href="#">Facebook</a></li>
+                           <li><a href="#">Snapchat</a></li>
+                           <li><a href="#">Twitter</a></li>
+                        </ul>
+                     </li>
+                     <li>
+                        <a href="#">Contact</a>
+                     </li>
+                  </ul>
+               </nav>
+               <div id="myOverlay" class="overlaye d-none">
+                  <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+                  <div class="overlaye-content">
+                     <form>
+                        <input type="search" placeholder="What can we help you find today?" required="">
+                        <button type="submit">
+                           <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
+                              <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z">
+                              </path>
+                           </svg>
+                        </button>
+                     </form>
+                  </div>
+               </div>
+               <div class="openBtn d-flex align-items-center" onclick="openSearch()">
+                  <svg fill="red" width="20px" height="20px" viewBox="0 0 24 24" id="search" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color">
+                     <line id="secondary" x1="21" y1="21" x2="15" y2="15" style="fill: none; stroke: rgb(71, 135, 203); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3;"></line>
+                     <circle id="primary" cx="10" cy="10" r="7" style="fill: none; stroke: rgb(20, 64, 110); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3;"></circle>
+                  </svg>
+               </div>
+            </div>
+         </div>
+      </header>
+      <section class="mt50">
+         <div class="container">
+            <div class="seprator-sec d-flex align-items-center justify-content-between">
+               <div class="sep-title">
+                  Social Media
+               </div>
+               <div class="sep-line">
+                  <div class="sep-line1  "></div>
+                  <div class="sep-line2"></div>
+               </div>
+            </div>
+            <div class="row row-gap15">
+               <div class="col-lg-3">
+                  <div class="row row-gap15">
+                     <div class="col-lg-12 col-md-6">
+                        <div class="site-card">
+                           <div class="img-placeholder folded">
+                              <a href="#">
+                              <img src="https://ityug247.com/wp-content/uploads/2024/02/residential-proxies.webp" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="site-title content-card">
+                              <a href="#" class="truncate fs18  ">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <div class="post-detl d-flex align-items-center justify-content-between">
+                                 <div class="auth-sec d-flex align-items-center">
+                                    <a href="#">
+                                    <img src="https://getassist.net/wp-content/uploads/2023/12/Alex-Jones-newsize.webp">
+                                    </a>
+                                    <a href="#" class="auth-name">Chitra Joshi</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-12 col-md-6">
+                        <div class="site-card">
+                           <div class="img-placeholder folded">
+                              <a href="#">
+                              <img class="img-fluid" src="https://ityug247.com/wp-content/uploads/2024/02/residential-proxies.webp">
+                              </a>
+                           </div>
+                           <div class="site-title content-card">
+                              <a href="#" class="truncate fs18  ">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <div class="post-detl d-flex align-items-center justify-content-between">
+                                 <div class="auth-sec d-flex align-items-center">
+                                    <a href="#">
+                                    <img src="https://getassist.net/wp-content/uploads/2023/12/Alex-Jones-newsize.webp">
+                                    </a>
+                                    <a href="#" class="auth-name">Chitra Joshi</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-6">
+                  <div class="row row-gap15">
+                     <div class=" col-lg-12 col-md-6">
+                        <div class="site-card   overlay-card">
+                           <div class="img-placeholder folded">
+                              <a href="#">
+                              <img src="https://ityug247.com/wp-content/uploads/2024/01/destiny-2-seasonal-build.webp" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="site-title">
+                              <a href="#" class="truncate">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <div class="post-detl d-flex align-items-center justify-content-between">
+                                 <div class="auth-sec d-flex align-items-center">
+                                    <a href="#">
+                                    <img src="https://getassist.net/wp-content/uploads/2023/12/Alex-Jones-newsize.webp">
+                                    </a>
+                                    <a href="#" class="auth-name">Chitra Joshi</a>
+                                 </div>
+                                 <p>09 Dec. 2023</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class=" col-lg-12 col-md-6">
+                        <div class="site-card d-grid35 md-block">
+                           <div class="img-placeholder folded">
+                              <a href="#">
+                              <img src="https://ityug247.com/wp-content/uploads/2023/09/ditch-hackers-on-social-media.webp" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="site-title p18">
+                              <a href="#" class="truncate">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <p>Have you ever Googled a question so specific that you had no hope of getting an answer? But then, you’d find a Reddit thread or. Have you ever Googled a question so specific that you had no hope of getting an answer? But then, you’d find a Reddit thread or.</p>
+                              <div class="post-detl d-flex align-items-center justify-content-between">
+                                 <div class="auth-sec d-flex align-items-center">
+                                    <a href="#">
+                                    <img src="https://getassist.net/wp-content/uploads/2023/12/Alex-Jones-newsize.webp">
+                                    </a>
+                                    <a href="#" class="auth-name">Chitra Joshi</a>
+                                 </div>
+                                 <p>09 Dec. 2023</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-3">
+                  <div class="row row-gap15">
+                     <div class="col-lg-12 col-md-6">
+                        <div class="site-card">
+                           <div class="img-placeholder folded">
+                              <a href="#">
+                              <img src="https://ityug247.com/wp-content/uploads/2024/02/residential-proxies.webp" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="site-title content-card">
+                              <a href="#" class="truncate fs18  ">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <div class="post-detl d-flex align-items-center justify-content-between">
+                                 <div class="auth-sec d-flex align-items-center">
+                                    <a href="#">
+                                    <img src="https://getassist.net/wp-content/uploads/2023/12/Alex-Jones-newsize.webp">
+                                    </a>
+                                    <a href="#" class="auth-name">Chitra Joshi</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-12 col-md-6">
+                        <div class="site-card">
+                           <div class="img-placeholder folded">
+                              <a href="#">
+                              <img class="img-fluid" src="https://ityug247.com/wp-content/uploads/2024/02/residential-proxies.webp">
+                              </a>
+                           </div>
+                           <div class="site-title content-card">
+                              <a href="#" class="truncate fs18  ">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <div class="post-detl d-flex align-items-center justify-content-between">
+                                 <div class="auth-sec d-flex align-items-center">
+                                    <a href="#">
+                                    <img src="https://getassist.net/wp-content/uploads/2023/12/Alex-Jones-newsize.webp">
+                                    </a>
+                                    <a href="#" class="auth-name">Chitra Joshi</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section class="mt50">
+         <div class="container">
+            <div class="seprator-sec d-flex align-items-center justify-content-between">
+               <div class="sep-title">
+                  Troubleshooting
+               </div>
+               <div class="sep-line">
+                  <div class="sep-line1  "></div>
+                  <div class="sep-line2"></div>
+               </div>
+            </div>
+            <div class="row row-gap15">
+               <div class="col-lg-6">
+                  <div class="row row-gap15">
+                     <div class="col-md-6">
+                        <div class="site-card box">
+                           <div class="img-placeholder">
+                              <a href="#">
+                              <img class="img-fluid" src="https://ityug247.com/wp-content/uploads/2023/02/How-To-Create-a-Telegram-Channel-1.webp">
+                              </a>
+                           </div>
+                           <div class="site-title">
+                              <a href="#" class="truncate fs18  ">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <div class="time">
+                                 02 min ago
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="site-card box">
+                           <div class="img-placeholder">
+                              <a href="#">
+                              <img src="https://ityug247.com/wp-content/uploads/2023/11/tech-trends-in-the-automotive-industry.webp" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="site-title ">
+                              <a href="#" class="truncate fs18  ">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <div class="time">
+                                 02 min ago
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="site-card box">
+                           <div class="img-placeholder">
+                              <a href="#">
+                              <img src="https://ityug247.com/wp-content/uploads/2023/11/tech-trends-in-the-automotive-industry.webp" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="site-title ">
+                              <a href="#" class="truncate fs18  ">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <div class="time">
+                                 02 min ago
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="site-card box">
+                           <div class="img-placeholder">
+                              <a href="#">
+                              <img src="https://ityug247.com/wp-content/uploads/2023/02/How-To-Create-a-Telegram-Channel-1.webp" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="site-title">
+                              <a href="#" class="truncate fs18  ">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <div class="time">
+                                 02 min ago
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-6">
+                  <div class="row row-gap15">
+                     <div class="col-lg-12">
+                        <div class="site-card d-grid35">
+                           <div class="img-placeholder">
+                              <a href="#">
+                              <img src="https://ityug247.com/wp-content/uploads/2023/09/ditch-hackers-on-social-media.webp" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="site-title p18">
+                              <a href="#" class="truncate">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <p>Have you ever Googled a question so specific that you had no hope of getting an answer? But then, you’d find a Reddit thread or. Have you ever Googled a question so specific that you had no hope of getting an answer? But then, you’d find a Reddit thread or.</p>
+                              <div class="time">
+                                 02 min ago
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-12">
+                        <div class="site-card d-grid35">
+                           <div class="img-placeholder">
+                              <a href="#">
+                              <img src="https://ityug247.com/wp-content/uploads/2023/09/ditch-hackers-on-social-media.webp" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="site-title p18">
+                              <a href="#" class="truncate">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <p>Have you ever Googled a question so specific that you had no hope of getting an answer? But then, you’d find a Reddit thread or. Have you ever Googled a question so specific that you had no hope of getting an answer? But then, you’d find a Reddit thread or.</p>
+                              <div class="time">
+                                 02 min ago
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-12">
+                        <div class="site-card d-grid35">
+                           <div class="img-placeholder">
+                              <a href="#">
+                              <img src="https://ityug247.com/wp-content/uploads/2023/09/ditch-hackers-on-social-media.webp" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="site-title p18">
+                              <a href="#" class="truncate">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <p>Have you ever Googled a question so specific that you had no hope of getting an answer? But then, you’d find a Reddit thread or. Have you ever Googled a question so specific that you had no hope of getting an answer? But then, you’d find a Reddit thread or.</p>
+                              <div class="time">
+                                 02 min ago
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section class="mt50">
+         <div class="container">
+            <div class="seprator-sec d-flex align-items-center justify-content-between">
+               <div class="sep-title">
+                  Mostly Searched
+               </div>
+               <div class="sep-line">
+                  <div class="sep-line1  "></div>
+                  <div class="sep-line2"></div>
+               </div>
+            </div>
+            <div class="row row-gap15">
+               <div class="col-lg-6">
+                  <div class="site-card">
+                     <div class="img-placeholder">
+                        <a href="#">
+                        <img src="https://ityug247.com/wp-content/uploads/2024/03/customer-service-ai.webp" class="img-fluid">
+                        </a>
+                     </div>
+                     <div class="site-title p18">
+                        <a href="#" class="truncate">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                        <p>Have you ever Googled a question so specific that you had no hope of getting an answer? But then, you’d find a Reddit thread or. Have you ever Googled a question so specific that you had no hope of getting an answer? But then, you’d find a Reddit thread or.</p>
+                        <div class="post-detl d-flex align-items-center justify-content-between">
+                           <div class="auth-sec d-flex align-items-center">
+                              <a href="#">
+                              <img src="https://getassist.net/wp-content/uploads/2023/12/Alex-Jones-newsize.webp">
+                              </a>
+                              <a href="#" class="auth-name">Chitra Joshi</a>
+                           </div>
+                           <p>09 Dec. 2023</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-6">
+                  <div class="row row-gap15">
+                     <div class="col-lg-12">
+                        <div class="site-card box d-grid35">
+                           <div class="img-placeholder">
+                              <a href="#">
+                              <img src="https://ityug247.com/wp-content/uploads/2023/12/ai-social-media-marketing.webp" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="site-title">
+                              <a href="#" class="truncate fs18">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <div class="time">
+                                 02 min ago
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-12">
+                        <div class="site-card box d-grid35">
+                           <div class="img-placeholder">
+                              <a href="#">
+                              <img src="https://ityug247.com/wp-content/uploads/2023/12/power-of-internet.webp" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="site-title">
+                              <a href="#" class="truncate fs18">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <div class="time">
+                                 02 min ago
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-12">
+                        <div class="site-card box d-grid35">
+                           <div class="img-placeholder">
+                              <a href="#">
+                              <img src="https://ityug247.com/wp-content/uploads/2023/10/software-development-powers-e-commerce.webp" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="site-title">
+                              <a href="#" class="truncate fs18">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <div class="time">
+                                 02 min ago
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-12">
+                        <div class="site-card box d-grid35">
+                           <div class="img-placeholder">
+                              <a href="#">
+                              <img src="https://ityug247.com/wp-content/uploads/2023/04/it-sector-1.webp" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="site-title">
+                              <a href="#" class="truncate fs18 ">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <div class="time">
+                                 02 min ago
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section class="mt50">
+         <div class="container">
+            <div class="seprator-sec d-flex align-items-center justify-content-between">
+               <div class="sep-title">
+                  Top 10
+               </div>
+               <div class="sep-line">
+                  <div class="sep-line1  "></div>
+                  <div class="sep-line2"></div>
+               </div>
+            </div>
+            <div class="row row-gap15 overflow-col">
+               <div class="col-lg-4 col-md-6">
+                  <div class="site-card">
+                     <div class="img-placeholder">
+                        <a href="#">
+                        <img src="https://ityug247.com/wp-content/uploads/2024/01/imginn-1.webp" class="img-fluid">
+                        </a>
+                     </div>
+                     <div class="site-title ">
+                        <a href="#" class="truncate">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                        <div class="post-detl d-flex align-items-center justify-content-between">
+                           <div class="auth-sec d-flex align-items-center">
+                              <a href="#">
+                              <img src="https://getassist.net/wp-content/uploads/2023/12/Alex-Jones-newsize.webp">
+                              </a>
+                              <a href="#" class="auth-name">Chitra Joshi</a>
+                           </div>
+                           <p>09 Dec. 2023</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-6">
+                  <div class="site-card">
+                     <div class="img-placeholder">
+                        <a href="#">
+                        <img src="https://ityug247.com/wp-content/uploads/2024/01/imginn-1.webp" class="img-fluid">
+                        </a>
+                     </div>
+                     <div class="site-title ">
+                        <a href="#" class="truncate">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                        <div class="post-detl d-flex align-items-center justify-content-between">
+                           <div class="auth-sec d-flex align-items-center">
+                              <a href="#">
+                              <img src="https://getassist.net/wp-content/uploads/2023/12/Alex-Jones-newsize.webp">
+                              </a>
+                              <a href="#" class="auth-name">Chitra Joshi</a>
+                           </div>
+                           <p>09 Dec. 2023</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-4 col-md-6">
+                  <div class="site-card">
+                     <div class="img-placeholder">
+                        <a href="#">
+                        <img src="https://ityug247.com/wp-content/uploads/2024/01/imginn-1.webp" class="img-fluid">
+                        </a>
+                     </div>
+                     <div class="site-title ">
+                        <a href="#" class="truncate">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                        <div class="post-detl d-flex align-items-center justify-content-between">
+                           <div class="auth-sec d-flex align-items-center">
+                              <a href="#">
+                              <img src="https://getassist.net/wp-content/uploads/2023/12/Alex-Jones-newsize.webp">
+                              </a>
+                              <a href="#" class="auth-name">Chitra Joshi</a>
+                           </div>
+                           <p>09 Dec. 2023</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section class="mt50">
+         <div class="container">
+            <div class="seprator-sec d-flex align-items-center justify-content-between">
+               <div class="sep-title">
+                  How To
+               </div>
+               <div class="sep-line">
+                  <div class="sep-line1  "></div>
+                  <div class="sep-line2"></div>
+               </div>
+            </div>
+            <div class="row row-gap15">
+               <div class="col-lg-6">
+                  <div class="row row-gap15">
+                     <div class="counter-term">
+                        <div class="col-lg-12">
+                           <div class="row">
+                              <div class="col-md-2">
+                                 <div class="num-post position-relative"></div>
+                              </div>
+                              <div class="col-md-10">
+                                 <div class="site-card">
+                                    <div class="site-title">
+                                       <a href="#" class="truncate fs18  ">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                                       <div class="post-detl d-flex align-items-center justify-content-between">
+                                          <div class="auth-sec d-flex align-items-center">
+                                             <a href="#">
+                                             <img src="https://getassist.net/wp-content/uploads/2023/12/Alex-Jones-newsize.webp">
+                                             </a>
+                                             <a href="#" class="auth-name">Chitra Joshi</a>
+                                          </div>
+                                          <p>09 Dec. 2023</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-lg-12">
+                           <div class="row">
+                              <div class="col-md-2">
+                                 <div class="num-post position-relative"></div>
+                              </div>
+                              <div class="col-md-10">
+                                 <div class="site-card">
+                                    <div class="site-title">
+                                       <a href="#" class="truncate fs18  ">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                                       <div class="post-detl d-flex align-items-center justify-content-between">
+                                          <div class="auth-sec d-flex align-items-center">
+                                             <a href="#">
+                                             <img src="https://getassist.net/wp-content/uploads/2023/12/Alex-Jones-newsize.webp">
+                                             </a>
+                                             <a href="#" class="auth-name">Chitra Joshi</a>
+                                          </div>
+                                          <p>09 Dec. 2023</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-lg-12">
+                           <div class="row">
+                              <div class="col-md-2">
+                                 <div class="num-post position-relative"></div>
+                              </div>
+                              <div class="col-md-10">
+                                 <div class="site-card">
+                                    <div class="site-title">
+                                       <a href="#" class="truncate fs18  ">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                                       <div class="post-detl d-flex align-items-center justify-content-between">
+                                          <div class="auth-sec d-flex align-items-center">
+                                             <a href="#">
+                                             <img src="https://getassist.net/wp-content/uploads/2023/12/Alex-Jones-newsize.webp">
+                                             </a>
+                                             <a href="#" class="auth-name">Chitra Joshi</a>
+                                          </div>
+                                          <p>09 Dec. 2023</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-lg-12">
+                           <div class="row">
+                              <div class="col-md-2">
+                                 <div class="num-post position-relative"></div>
+                              </div>
+                              <div class="col-md-10">
+                                 <div class="site-card">
+                                    <div class="site-title">
+                                       <a href="#" class="truncate fs18  ">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                                       <div class="post-detl d-flex align-items-center justify-content-between">
+                                          <div class="auth-sec d-flex align-items-center">
+                                             <a href="#">
+                                             <img src="https://getassist.net/wp-content/uploads/2023/12/Alex-Jones-newsize.webp">
+                                             </a>
+                                             <a href="#" class="auth-name">Chitra Joshi</a>
+                                          </div>
+                                          <p>09 Dec. 2023</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-lg-6">
+                  <div class="row row-gap15">
+                     <div class="col-md-6">
+                        <div class="site-card box">
+                           <div class="img-placeholder">
+                              <a href="#">
+                              <img src="https://ityug247.com/wp-content/uploads/2023/11/dubai-marin.webp" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="site-title  content-card">
+                              <a href="#" class="truncate fs18  ">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <div class="post-detl d-flex align-items-center justify-content-between">
+                                 <div class="auth-sec d-flex align-items-center">
+                                    <a href="#">
+                                    <img src="https://getassist.net/wp-content/uploads/2023/12/Alex-Jones-newsize.webp">
+                                    </a>
+                                    <a href="#" class="auth-name">Chitra Joshi</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="site-card box">
+                           <div class="img-placeholder">
+                              <a href="#">
+                              <img src="https://ityug247.com/wp-content/uploads/2023/12/ai-financial-service.webp" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="site-title  content-card">
+                              <a href="#" class="truncate fs18  ">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <div class="post-detl d-flex align-items-center justify-content-between">
+                                 <div class="auth-sec d-flex align-items-center">
+                                    <a href="#">
+                                    <img src="https://getassist.net/wp-content/uploads/2023/12/Alex-Jones-newsize.webp">
+                                    </a>
+                                    <a href="#" class="auth-name">Chitra Joshi</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="site-card box">
+                           <div class="img-placeholder">
+                              <a href="#">
+                              <img src="https://ityug247.com/wp-content/uploads/2023/12/ai-financial-service.webp" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="site-title  content-card">
+                              <a href="#" class="truncate fs18  ">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <div class="post-detl d-flex align-items-center justify-content-between">
+                                 <div class="auth-sec d-flex align-items-center">
+                                    <a href="#">
+                                    <img src="https://getassist.net/wp-content/uploads/2023/12/Alex-Jones-newsize.webp">
+                                    </a>
+                                    <a href="#" class="auth-name">Chitra Joshi</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="site-card box">
+                           <div class="img-placeholder">
+                              <a href="#">
+                              <img src="https://ityug247.com/wp-content/uploads/2023/11/dubai-marin.webp" class="img-fluid">
+                              </a>
+                           </div>
+                           <div class="site-title  content-card">
+                              <a href="#" class="truncate fs18  ">How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer. How Generative AI Can Change the Face of Customer.</a>
+                              <div class="post-detl d-flex align-items-center justify-content-between">
+                                 <div class="auth-sec d-flex align-items-center">
+                                    <a href="#">
+                                    <img src="https://getassist.net/wp-content/uploads/2023/12/Alex-Jones-newsize.webp">
+                                    </a>
+                                    <a href="#" class="auth-name">Chitra Joshi</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <footer>
+         <div class="ftr-img">
+            <div class="container">
+               <div class="foot-info d-flex align-items-center justify-content-between">
+                  <div class="mails order-2">
+                     <span class="fw600 d-flex align-items-center">
+                     <svg version="1.1" id="MAIL" width="20" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                        width="800px" height="800px" viewBox="0 0 1800 1800" enable-background="new 0 0 1800 1800" xml:space="preserve">
+                        <g>
+                           <path fill="#333333" d="M531.087,344.727c0.247,0,0.492,0.033,0.739,0.033h453.558c16.819,0,30.444-13.625,30.444-30.436
+                              c0-16.815-13.625-30.435-30.444-30.435H638.226H531.826c-16.811,0-30.44,13.62-30.44,30.435
+                              C501.386,330.885,514.624,344.331,531.087,344.727z"/>
+                           <path fill="#333333" d="M531.826,497.389h749.422c16.814,0,30.443-13.629,30.443-30.439c0-16.814-13.629-30.439-30.443-30.439
+                              H531.826c-16.811,0-30.44,13.625-30.44,30.439C501.386,483.76,515.016,497.389,531.826,497.389z"/>
+                           <path fill="#333333" d="M531.826,650.009h749.422c16.814,0,30.443-13.633,30.443-30.444c0-8.872-3.822-16.827-9.877-22.389
+                              c-5.424-4.982-12.625-8.046-20.566-8.046H531.826c-7.938,0-15.143,3.064-20.567,8.046c-6.054,5.562-9.873,13.517-9.873,22.389
+                              C501.386,636.376,515.016,650.009,531.826,650.009z"/>
+                           <path fill="#333333" d="M1311.691,772.194c0-16.806-13.629-30.436-30.443-30.436H531.826c-16.811,0-30.44,13.629-30.44,30.436
+                              c0,16.815,13.629,30.444,30.44,30.444h749.422C1298.063,802.638,1311.691,789.009,1311.691,772.194z"/>
+                           <path fill="#333333" d="M1772.088,533.511c-2.481-3.422-5.691-6.4-9.603-8.622l-246.454-139.961v-82.389v-9.853
+                              c-1.264-7.738-5.432-14.501-11.406-19.066l-49.465-42.835l-131.073-113.508l-61.889-53.596c-5.286-4.582-11.866-7.021-18.591-7.275
+                              h-2.197H937.55h-66.904H383.746c-47.809,0-86.705,38.895-86.705,86.696V382.15L61.554,515.893
+                              c-31.678,11.565-54.396,41.913-54.396,77.54v1067.543c0,45.554,37.064,82.618,82.622,82.618h1625.598
+                              c45.558,0,82.623-37.064,82.623-82.618V593.433C1798,569.839,1788.002,548.583,1772.088,533.511z M1614.426,510.814l92.579,52.583
+                              l-11.661,8.301l-179.313,127.664V571.698v-60.883v-55.873L1614.426,510.814z M1405.5,267.454h-132.895V152.361L1405.5,267.454z
+                              M357.922,571.698v-60.883v-93.226v-70.01V143.102c0-14.239,11.585-25.825,25.824-25.825h379.699H886.73h34.734h123.285h167.617
+                              v180.296c0,16.631,13.483,30.11,30.119,30.11h212.674v22.668v70.015v90.448v60.883V742.7l-397.298,282.87l-50.781,36.148
+                              l-18.591,13.241l-81.088,57.728l-81.093-57.728l-18.611-13.25l-50.782-36.155L357.922,741.483V571.698z M193.76,510.814
+                              l103.281-58.649v58.649v60.883V698.14L119.448,571.698l-14.597-10.395L193.76,510.814z M68.036,1648.984V609.822l229.005,163.047
+                              l60.88,43.344L710.7,1067.38l-8.372,7.58l-67.267,60.871L68.036,1648.984z M121.495,1682.723l604.294-546.892l35.693-32.304
+                              l45.37,32.304l82.897,59.028c5.283,3.76,11.462,5.637,17.653,5.637c6.187,0,12.369-1.877,17.652-5.637l82.889-59.028l45.354-32.286
+                              l35.686,32.286l604.311,546.892H121.495z M1737.119,1640.271l-557.41-504.439l-67.267-60.871l-8.359-7.563l351.077-249.962
+                              l60.871-43.348l221.088-157.407V1640.271z"/>
+                        </g>
+                     </svg>
+                     <a href="#" class="mails">learncrypto@gmail.com</a>
+                  </div>
+                  <div class="logo">
+               <a href="#">Learning Crypto</a>
+            </div>
+                  <div class="soc-icn d-flex fw900 align-items-center">
+                     Follow us:
+                     <ul class="d-flex">
+                        <li>
+                           <a href="#" target="_blank" rel="noreferrer noopener">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 42 42" fill="none">
+                                 <circle cx="21" cy="21" r="20" fill="#1375F0"/>
+                                 <path d="M26.3873 22.8125L26.9705 19.012H23.3238V16.5457C23.3238 15.506 23.8332 14.4925 25.4665 14.4925H27.1243V11.2568C27.1243 11.2568 25.6199 11 24.1814 11C21.1783 11 19.2153 12.8203 19.2153 16.1155V19.012H15.877V22.8125H19.2153V32H23.3238V22.8125H26.3873Z" fill="white"/>
+                              </svg>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="https://www.linkedin.com/in/sejalmehrabattersea/" target="_blank" rel="noreferrer noopener">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 42 42" fill="none">
+                                 <circle cx="21" cy="21" r="20" fill="#FE0008"/>
+                                 <path d="M30.3583 16.9154C30.2543 16.5001 30.0426 16.1196 29.7446 15.8123C29.4465 15.5051 29.0727 15.2819 28.6608 15.1654C27.1558 14.7979 21.1358 14.7979 21.1358 14.7979C21.1358 14.7979 15.1158 14.7979 13.6108 15.2004C13.1988 15.3169 12.825 15.5401 12.5269 15.8473C12.2289 16.1546 12.0172 16.5351 11.9133 16.9504C11.6378 18.4777 11.5031 20.0271 11.5108 21.5791C11.5009 23.1428 11.6357 24.704 11.9133 26.2429C12.0278 26.6452 12.2443 27.0112 12.5416 27.3055C12.839 27.5998 13.2072 27.8124 13.6108 27.9229C15.1158 28.3254 21.1358 28.3254 21.1358 28.3254C21.1358 28.3254 27.1558 28.3254 28.6608 27.9229C29.0727 27.8063 29.4465 27.5831 29.7446 27.2759C30.0426 26.9686 30.2543 26.5881 30.3583 26.1729C30.6316 24.657 30.7663 23.1194 30.7608 21.5791C30.7706 20.0154 30.6358 18.4542 30.3583 16.9154Z" fill="white" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                 <path d="M19.1674 24.44L24.1986 21.5788L19.1674 18.7175V24.44Z" fill="#FE0008" stroke="#FE0008" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              </svg>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#" target="_blank" rel="noreferrer noopener">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 42 42" fill="none">
+                                 <circle cx="21" cy="21" r="20" fill="black"/>
+                                 <path d="M27.0049 13.4688H29.9006L23.576 20.6957L31.0163 30.5312H25.192L20.627 24.5676L15.4098 30.5312H12.51L19.2735 22.7998L12.1409 13.4688H18.1127L22.2348 18.9197L27.0049 13.4688ZM25.9877 28.8004H27.5915L17.2391 15.1094H15.5165L25.9877 28.8004Z" fill="white"/>
+                              </svg>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="#" target="_blank" rel="noreferrer noopener">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 42 42" fill="none">
+                                 <circle cx="21" cy="21" r="20" fill="#2768B2"/>
+                                 <path d="M16.1672 28.5001H12.5391V16.8165H16.1672V28.5001ZM14.3512 15.2228C13.191 15.2228 12.25 14.2618 12.25 13.1017C12.25 12.5444 12.4714 12.01 12.8654 11.6159C13.2595 11.2219 13.7939 11.0005 14.3512 11.0005C14.9084 11.0005 15.4429 11.2219 15.8369 11.6159C16.231 12.01 16.4523 12.5444 16.4523 13.1017C16.4523 14.2618 15.5109 15.2228 14.3512 15.2228ZM29.7461 28.5001H26.1258V22.8126C26.1258 21.4571 26.0984 19.7188 24.2395 19.7188C22.3531 19.7188 22.0641 21.1915 22.0641 22.7149V28.5001H18.4398V16.8165H21.9195V18.4103H21.9703C22.4547 17.4923 23.6379 16.5235 25.4031 16.5235C29.075 16.5235 29.75 18.9415 29.75 22.0821V28.5001H29.7461Z" fill="white"/>
+                              </svg>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-lg-4">
+                     <div class="news">
+                        <div class="fs22 fw900 sep-title">Free Newsletter</div>
+                        <p>Subscribe to receives daily updates</p>
+                        <form>
+                           <input type="email" placeholder="Enter your E-mail" required>
+                           <button type="submit">Subscribe Now</button>
+                        </form>
+                     </div>
+                  </div>
+                  <div class="col-lg-8">
+                     <div class="row">
+                        <div class="col-lg-6">
+                           <div class="fs22 fw900 sep-title ftr-list">Category</div>
+                           <ul class="ftr-link d-grid40">
+                              <li><a href="#">Software & Application</a></li>
+                              <li><a href="#">Entertainment</a></li>
+                              <li><a href="#">Social Media</a></li>
+                              <li><a href="#">Guide</a></li>
+                              <li><a href="#">Software & Application</a></li>
+                              <li><a href="#">Entertainment</a></li>
+                              <li><a href="#">Social Media</a></li>
+                              <li><a href="#">Lifestyle</a></li>
+                           </ul>
+                        </div>
+                        <div class="col-lg-3">
+                           <div class="fs22 fw900 sep-title ftr-list">Our Team</div>
+                           <ul class="ftr-link">
+                              <li><a href="#">Gaurav Rathore</a></li>
+                              <li><a href="#">Sejal Mehra</a></li>
+                              <li><a href="#">Alex Jones</a></li>
+                              <li><a href="#">Joseph Williams</a></li>
+                           </ul>
+                        </div>
+                        <div class="col-lg-3">
+                           <div class="fs22 fw900 sep-title ftr-list">Our Company</div>
+                           <ul class="ftr-link">
+                              <li><a href="#">Career</a></li>
+                              <li><a href="#">Our Team</a></li>
+                              <li><a href="#">Privacy Policy</a></li>
+                              <li><a href="#">Terms &amp; Condition's</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="copyright">
+                     <p class="p18">©2024 LearningCrypto All Rights Reserved.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <button id="onTop">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="#000">
+               <path d="M2.721 10.816 1.905 10a.879.879 0 0 1 0-1.247l7.144-7.146a.879.879 0 0 1 1.247 0l7.142 7.142a.879.879 0 0 1 0 1.247l-.816.816a.882.882 0 0 1-1.261-.015l-4.216-4.425v10.565a.88.88 0 0 1-.882.882H9.087a.88.88 0 0 1-.882-.882V6.372L3.982 10.8a.876.876 0 0 1-1.261.015Z"></path>
+            </svg>
+         </button>
+      </footer>
+
+      <script type="text/javascript" src="assest/js/myscript.js"></script>
+   </body>
+</html>
