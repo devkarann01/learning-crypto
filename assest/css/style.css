@@ -185,7 +185,7 @@ form button:hover{
 
 @media screen and (max-width: 600px) {
 
-  .logo{
+  .logo a{
  font-size:26px !important;
   }
 
