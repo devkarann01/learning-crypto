@@ -565,6 +565,10 @@ footer .ftr-link li {
   grid-template-columns: auto;
 }
 
+  .logo{
+ font-size:26px;
+  }
+
 }
 
 
